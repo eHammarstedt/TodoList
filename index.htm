@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Todo list</title>
+<!--Font Montserrat-->
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+<!--stylesheets-->
+	<link rel="stylesheet" type="text/css" href="css/reset.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+
+	<header>
+		<h1>Get your sh*t togeter</h1>
+	</header>
+	<main>
+		<div>
+			<div class="blockLeft">
+				<input id="inputSubject" type="text" name="subject" placeholder="What sh*t?"><br>
+
+				<textarea id="inputDescription" type="text" name="description" placeholder="Describe that sh*t"></textarea><br>
+
+				<label for="start">Start that sh*t now!</label><br>
+				<input id="start" type="date" name="today" disabled="disabled"><br>
+				
+				<label for="deadline">finish that sh*t by..</label><br>
+				<input id="deadline" type="date" name="deadline" ><br>
+
+				<button id="prioOne">Can't wait!</button>
+				<button id="prioTwo">do it asap!</button>
+				<button id="prioThree">do whenever!</button><br>
+
+				<button id="addItem">Save that sh*t</button>
+			</div>
+			<div class="blockRight">
+	<!-- Uncompleted tasks -->
+				<ul class="todo" id="todo">
+				<li>
+					<div class="buttonDiv">
+						<button class="smallBtn delete">del</button>
+						<button class="smallBtn done">done</button>
+						<button class="smallBtn edit">edit</button>
+					</div>
+					<p>subject</p>
+					<p class="dates">yyyy-mm-dd - yyyy-mm-dd</p>
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce lectus massa, dignissim at aliquam in, mattis a dolor.</p>
+				</li>
+				</ul>
+	<!-- Completed tasks -->
+
+				<ul class="todo" id="complete">
+					
+				</ul>
+			</div>
+		</div>
+	</main>
+<!--JavaScript file-->
+	<script src="javaScript/main.js"></script>
+</body>
+</html>
