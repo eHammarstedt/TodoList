@@ -19,6 +19,29 @@ document.getElementById("addItem").addEventListener("click", function() {
 	}
 });
 
+//function to remove item from todo list
+function removeItem() {
+	var itemLi = this.parentNode.parentNode;
+	var parentUl = itemLi.parentNode;
+	parentUl.removeChild(itemLi);
+}
+//function for items done
+function itemDone(){
+	var itemLi = this.parentNode.parentNode;
+	var parentUl = itemLi.parentNode;
+	var id = parentUl.id;
+	parentUl.removeChild(itemLi);
+
+	if (id === "todo"){
+		var completeList = document.getElementById("complete");
+		completeList.appendChild(itemLi);
+	}
+	else{
+		var list = document.getElementById("todo");
+		list.appendChild(itemLi);
+	}
+}
+
 //creates and put in the values in new todo task
 function addItemTodo(sub,desc,start,dead){
 	var list = document.getElementById("todo");
@@ -33,10 +56,17 @@ function addItemTodo(sub,desc,start,dead){
 	remove.classList.add("delete");
 	remove.innerText = "del"; 
 
+	//add clockevent for removing the item
+	remove.addEventListener("click", removeItem)
+
+
 	var done = document.createElement("button");
 	done.classList.add("smallBtn");
 	done.classList.add("done");
 	done.innerText = "done"; 
+
+	//add click event for completing the item
+	done.addEventListener("click", itemDone)
 
 	var edit = document.createElement("button");
 	edit.classList.add("smallBtn");
@@ -71,3 +101,7 @@ function addItemTodo(sub,desc,start,dead){
 //put the li in an ul
 	list.appendChild(todoLi);
 }
+
+
+
+var deleteBtn = document.getElementById

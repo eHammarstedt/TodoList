@@ -57,8 +57,10 @@ div {
 	}
 
 label {
+	display: inline-block;
 	text-align: left;
-	padding: 10px;
+	margin-top: 10px;
+	margin-bottom: 10px;
 	color: rgba(0,0,0,.2);
 }
 
@@ -136,7 +138,10 @@ textarea {
 	font-weight: 400;
 	text-indent: 10px;
 	width: 100%;
+	min-width: 100%;
+	max-width: 100%;
 	min-height: 100px;
+	max-height: 250px;
 	background-color: rgba(255,255,255,0.2);
 	box-sizing: border-box;
 	border-radius: 10px;
@@ -144,8 +149,7 @@ textarea {
 	box-shadow: none;
 	outline: none;
 	padding-top: 15px;
-	margin-top: 5px;
-	margin-bottom: 5px;
+	margin-bottom: 10px;
 
 	-webkit-appearance:none;
 	-moz-appearance:none;
@@ -163,7 +167,7 @@ button {
 	border: 0px; 
 	box-shadow: 0px 2px 4px rgba(44,62,80, .6);
 	outline: none;
-	margin: 10px;
+	margin: 0 0 10px 0;
 }
 
 button:active {
@@ -181,7 +185,9 @@ button:active {
 	display: inline-block;
 	width: 60px;
 	height: 60px;
+	margin: 10px;
 }
+
 
 .delete{
 	transition: 200ms ease;
@@ -212,6 +218,7 @@ button:active {
 	color: white;
 }
 
+
 .edit{
 	background-color: white;
 	border:5px solid;
@@ -231,19 +238,51 @@ ul.todo {
 	float: left;
 	width: 100%;
 }
+ul#todo:not(:empty) + ul.todo#complete:not(:empty){
+	position: relative;
+	padding: 30px 0 0 0;
+}
+
+ul#todo:not(:empty) + ul.todo#complete:not(:empty)::before{
+	content:"";
+	width: 200px;
+	height: 1px;
+	background: #34314c;
+	position: absolute;
+	top: 10px;
+	left: 50%;
+	margin: 0 0 0 -100px;
+}
 
 ul.todo li {
-	display: inline-block;
+	display: block;
 	box-sizing: border-box;
 	text-align: left;
 	background-color: white;
 	width: 100%;
 	min-height: 100px;
-	float: left;
-	border-radius: 5px;
+	border-radius: 10px;
 	box-shadow: 0px 2px 4px rgba(44,62,80, .15);
 	padding: 10px;
 	margin-bottom: 10px;	
+}
+
+ul#complete li {
+	background-color: rgba(255,255,255,.2);
+}
+
+ul#complete button.done{
+	background-color: rgba( 165, 210, 150, 1);
+	color:white;
+}
+ul#complete button.edit{
+	cursor: not-allowed;
+	background-color: rgba( 255, 255, 255, .5);
+	border-color: rgba( 255, 255, 255, .5);
+	color:white;
+	opacity: .5;
+	box-shadow: none;
+
 }
 
 .dates{
@@ -262,14 +301,20 @@ ul.todo li p:first-of-type{
 
 #prioOne{
 	background-color: rgba(192, 53, 70, 1);
+	margin-left: 5px;
+	margin-right: 5px;
 }
 
 #prioTwo{
 	background-color: rgba( 255, 201, 82, 1);
+	margin-left: 5px;
+	margin-right: 5px;
 }
 
 #prioThree{
 	background-color: rgba( 165, 210, 150, 1);
+	margin-left: 5px;
+	margin-right: 5px;
 }
 
 #addItem{
