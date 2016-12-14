@@ -42,6 +42,35 @@ function itemDone(){
 	}
 }
 
+//Function to edit task
+function editTask(){
+	var itemLi = this.parentNode.parentNode;
+	//finding the child with class Subject
+	var subjectChild = null;
+	for (var i = 0; i < itemLi.childNodes.length; i++) {
+	    if (itemLi.childNodes[i].className == "subject") {
+	      subjectChild = itemLi.childNodes[i];
+	      break;
+	    }        
+	}
+
+	var subject = subjectChild.innerText;
+	var subjectInput = document.getElementById("inputSubject");
+	subjectInput.value = subject;
+
+	var dateChild = null;
+	for (var i = 0; i < itemLi.childNodes.length; i++) {
+	    if (itemLi.childNodes[i].className == "dates") {
+	      dateChild = itemLi.childNodes[i];
+	      break;
+	    }        
+	}
+
+	var date = dateChild.innerText.substring(13);
+	var dateInput = document.getElementById("deadline");
+	dateInput.value = date;
+}
+
 //creates and put in the values in new todo task
 function addItemTodo(sub,desc,start,dead){
 	var list = document.getElementById("todo");
@@ -73,14 +102,18 @@ function addItemTodo(sub,desc,start,dead){
 	edit.classList.add("edit");
 	edit.innerText = "edit"; 
 
+	edit.addEventListener("click", editTask)
+
 
 	var subjectP = document.createElement("p");
 	subjectP.innerText = sub;
+	subjectP.classList.add("subject");
 	var datesP = document.createElement("p");
 	datesP.innerText = start + " - " + dead; 
 	datesP.classList.add("dates");
 	var descriptionP = document.createElement("p");
 	descriptionP.innerText = desc;
+	descriptionP.classList.add("description");
 
 
 
@@ -88,8 +121,6 @@ function addItemTodo(sub,desc,start,dead){
 	buttonsDiv.appendChild(remove);
 	buttonsDiv.appendChild(done);
 	buttonsDiv.appendChild(edit);
-
-
 
 //put the buttonsdiv in a todoli
 	todoLi.appendChild(buttonsDiv);
